@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/uncompressed.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <title>Calculator</title>
+
+</head>
+<body>
+
+<h1>Calculator</h1> <br/>
+<form>
+    First number: <input id="firstNum" type="text" name="firstNum"><br>
+    Second number: <input id="secondNum" type="text" name="second"><br>
+    Symbol: <input id="symbol" type="text" name="symbol"><br>
+    <p>Result is:</p>
+</form>
+
+<!--<script type="text/javascript" src="/resources/events.js"></script>-->
+
+<script>
+    $("#firstNum, #secondNum, #symbol").keyup(function () {
+        var res;
+        var in1 = $("#firstNum").val();
+        var in2 = $("#secondNum").val();
+        if (isNaN(in1) || isNaN(in2)) {
+            alert("Not a number");
+        }
+        if (in1 < 0 || in2 < 0) {
+            alert("Negative not accepted");
+        }
+        var op1 = Number(in1);
+        var op2 = Number(in2);
+        var symbol = $("#symbol").val();
+        switch (symbol) {
+            case "+":
+                res = op1 + op2;
+                break;
+            case "-":
+                res = op1 - op2;
+                break;
+            case "*":
+                res = op1 * op2;
+                break;
+            case "/":
+                res = op1 / op2;
+                break;
+            default:
+                res = "";
+        }
+
+        $("p").html("Result is: " + res);
+    })
+</script>
+
+</body>
+</html>
